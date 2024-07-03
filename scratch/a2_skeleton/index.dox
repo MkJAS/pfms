@@ -1,0 +1,86 @@
+/*!
+
+*/
+
+// without this gap between two doxygen definition, the last group does not get
+// populated properly for some reason.
+
+/*!
+@mainpage Assignment 1: Joseph Seklawy - 12578845
+
+The task is to simulate the flight path of an airplane to visit the bogies present on the map.
+
+INSTRUCTIONS:
+
+The simulator will run in BASIC mode by defualt unless it is run from terminal with " --advanced" added to the command
+or if the GameMode is set to advanced in the main via "GameMode game_mode = GameMode::ADVANCED;" before the simulation is created.
+1.  Select game mode
+2.  The main requires a vector of threads to hold the simulation threads
+3.  Create the simulation object via "std::shared_ptr<Simulator> sim(new Simulator(true,game_mode));"
+4.  Then the bogiepos and control objects must be created like so;
+    Bogiepos bogiepos(sim);
+    Control control(sim);
+    NOTE: THE SIM MUST BE PASSED TO THE OBJECTS OF BOTH BOGIPOS AND CONTROL AS SHOWN ABOVE OTHERWISE THE AIRCRAFT WILL DO NOTHING
+5.  The sim spawn thread can then be started and passed to the vector of threads
+6.  The threads within the 2 classes must then be started like so;
+    bogiepos.start();
+    control.start();
+7.  The main then requires a permanent loop that passes data between the two class objects of bogiepos -> control.
+    The psuedo code should follow;\n
+    if(game_mode is BASIC)
+    while(true)\n
+    {
+        if(not restarted)\n
+        {
+        temp1 = getbogieglobal\n
+        temp2 = getbogiefriendly\n
+        temp3 = getfriendlyxy0\n
+        control.setbogiexyth(temp1,temp2,temp3)
+        }
+    }
+
+SUMMARY:
+
+The Bogiepos class handles all the calculations required to obtain the bogies positions in both the global frame
+and the local frame of references. These are both calculated by a single thread "calcbogieglobalandfriendly()" which is blocking
+and runs constantly. This function is also responsible for waking up the "getbogiefriendly" and "getbogieglobal" functions which
+allow for the data to be then passed to the Control class via the main function.
+
+The Control class handles all the moving and path calculation required to keep the friendly moving and moving toward the bogies.
+The Control class has 3 threads. The idle thread simply ensures that the watchdog timer does not time out, constantly passing move commands
+every 30ms. The calcpath thread is only woken up when the data is obtained from main and is responsible for calculating which order the AIRCRAFT
+should visit the bogies. This order is calculating by a graph search. Once this is calculating the calcpath() thread then calls the
+move() function which handles all the velocity calculations that causes the friendly to reach the bogies.
+The third thread optvelocities() runs only during the move() function and determines the optimal linear and angular velocities which
+abide by the 6G limit whilst also abiding by the pure pursuit calculation.
+
+THE GRAPH SEARCH:
+
+The graph search is completed in a few steps and works on a model in which the friendly is able to rotate on the spot. Although
+this is not actually how the friendly moves, modelling it this way simplifies the process and since all we require is an order based on time,
+the order obtained this way should remain the same even if it was calculated with actual movements;
+1.  Obtain current friendly position and orientation
+2.  Based on the above, order the bogie's based on which is quickest to reach
+3.  Record the time to reach the first bogie(bogie1) in the above order and then extrapolate the friendly position and orientation to that bogie
+4.  Now at bogie1, determine which of the remaining bogies would be quicest to reach from bogie1 at the extroplated orientation
+5.  Record the time take to reach bogie2 from bogie1 and add it to a total time counter
+5.  Repeat for all bogies. Record the total time taken from bogie1 to bogieN
+6.  Once all bogies have been visited, restart from the beginning, this time starting at the second bogie in the order calculated in step 2
+7.  Now for every bogie visited, check the current total time against the total time counter in step 5. If the current total time is larger than the
+    time counter, abandon this path as it is already longer than the previous path.
+8.  If at the end of this path, the total time is LESS than the previous counter. Update the counter and replace the accepted order with THIS path order.
+9.  Repeat until every bogie has been chosen as the first in the path
+10. The result should be an order which is the quickest out of every possible combination
+
+KNOWN BUGS:
+(NOTE: THIS MAY HAVE BEEN SOLVED)In some instances during BASIC mode, it appears that the friendly will swap 2 bogies in terms of order of interception.
+I believe this must be due to the method in which the graph search calculations are computed, however I was unable to solve the 
+issue. But i do believe it has something to do with the calculation of the angle between the friendly current position and the reminaing bogies
+
+In some cases where 2 bogies spawn right next to eachother, the friendly may intercept the bogies in the wrong order. This may cause the
+code to break and lead to infinte circling.
+
+@n By Joseph Seklawy
+@n joseph.seklawy@student.uts.edu.au
+
+*/

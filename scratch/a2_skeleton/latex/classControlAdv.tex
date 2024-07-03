@@ -1,0 +1,93 @@
+\hypertarget{classControlAdv}{}\section{Control\+Adv Class Reference}
+\label{classControlAdv}\index{Control\+Adv@{Control\+Adv}}
+
+
+Inheritance diagram for Control\+Adv\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{classControlAdv__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Control\+Adv\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{classControlAdv__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControlAdv_ac7548cd0591b7dfbac40b057a7eafa47}\label{classControlAdv_ac7548cd0591b7dfbac40b057a7eafa47}} 
+{\bfseries Control\+Adv} (std\+::shared\+\_\+ptr$<$ Simulator $>$ \&sim, std\+::shared\+\_\+ptr$<$ Timer $>$ \&timer)
+\item 
+\mbox{\Hypertarget{classControlAdv_a6a7d6ff44d04141ace8bda9dc051dae0}\label{classControlAdv_a6a7d6ff44d04141ace8bda9dc051dae0}} 
+void \hyperlink{classControlAdv_a6a7d6ff44d04141ace8bda9dc051dae0}{start} ()
+\begin{DoxyCompactList}\small\item\em starts threads \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControlAdv_aca6b996dfb7b0633d0e402f0a09f7fdf}\label{classControlAdv_aca6b996dfb7b0633d0e402f0a09f7fdf}} 
+void {\bfseries setbogiexyth} (std\+::map$<$ int, \hyperlink{structvelocity}{velocity} $>$ \&bogievel)
+\item 
+\mbox{\Hypertarget{classControlAdv_a069aae3738a7fb894acfcd49fb1fc129}\label{classControlAdv_a069aae3738a7fb894acfcd49fb1fc129}} 
+void {\bfseries extrapbogiexy} (\hyperlink{structvelocity}{velocity} vel, double T, double \&ty, double \&tx)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControlAdv_af959e09368ce3cb3f514df163d56910b}\label{classControlAdv_af959e09368ce3cb3f514df163d56910b}} 
+void {\bfseries calcintercept} ()
+\item 
+\mbox{\Hypertarget{classControlAdv_a9090a1f95722a0f8da3c6564b954c809}\label{classControlAdv_a9090a1f95722a0f8da3c6564b954c809}} 
+double {\bfseries get\+Friendly\+Vx\+Vy} (double orient)
+\item 
+\mbox{\Hypertarget{classControlAdv_acd2da96b69355864cd786643934da6f4}\label{classControlAdv_acd2da96b69355864cd786643934da6f4}} 
+void {\bfseries chase} ()
+\item 
+\mbox{\Hypertarget{classControlAdv_a488478a3a2b7cd2f36d5169ad6dd7781}\label{classControlAdv_a488478a3a2b7cd2f36d5169ad6dd7781}} 
+void \hyperlink{classControlAdv_a488478a3a2b7cd2f36d5169ad6dd7781}{optvelocities} ()
+\begin{DoxyCompactList}\small\item\em Calculates the needed linear and angular velocites to achieve the pure pursuit gamma function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControlAdv_a3264e85aeca962cfe7c635a320db865e}\label{classControlAdv_a3264e85aeca962cfe7c635a320db865e}} 
+void {\bfseries idle} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControlAdv_a086fbf6bfcadcf4d13d6116a5ce2e244}\label{classControlAdv_a086fbf6bfcadcf4d13d6116a5ce2e244}} 
+std\+::condition\+\_\+variable {\bfseries velcv\+\_\+}
+\item 
+\mbox{\Hypertarget{classControlAdv_aea416263a252da236cc1a071f831a46e}\label{classControlAdv_aea416263a252da236cc1a071f831a46e}} 
+std\+::mutex {\bfseries velmtx\+\_\+}
+\item 
+\mbox{\Hypertarget{classControlAdv_aab5412362f3266f03f65c47c43fb6f71}\label{classControlAdv_aab5412362f3266f03f65c47c43fb6f71}} 
+std\+::shared\+\_\+ptr$<$ Timer $>$ {\bfseries timer\+\_\+}
+\item 
+\mbox{\Hypertarget{classControlAdv_ad42217b48fd54b942e742e659dbafeda}\label{classControlAdv_ad42217b48fd54b942e742e659dbafeda}} 
+std\+::map$<$ int, \hyperlink{structvelocity}{velocity} $>$ {\bfseries bogie\+Vels\+\_\+}
+\item 
+\mbox{\Hypertarget{classControlAdv_a5e51c2094503e07e79a1e5908917ffd0}\label{classControlAdv_a5e51c2094503e07e79a1e5908917ffd0}} 
+double {\bfseries velocity\+\_\+}
+\item 
+\mbox{\Hypertarget{classControlAdv_ad0f0eb876e33108e6ad8aec21b5a8339}\label{classControlAdv_ad0f0eb876e33108e6ad8aec21b5a8339}} 
+double {\bfseries Vtheta\+\_\+}
+\item 
+\mbox{\Hypertarget{classControlAdv_a56e974bfba67286059caf386fe48fd73}\label{classControlAdv_a56e974bfba67286059caf386fe48fd73}} 
+double {\bfseries b\+T\+\_\+theta\+\_\+}
+\item 
+\mbox{\Hypertarget{classControlAdv_a86a4c88f409e23090fec297853adaaa5}\label{classControlAdv_a86a4c88f409e23090fec297853adaaa5}} 
+double {\bfseries bx\+T\+\_\+}
+\item 
+\mbox{\Hypertarget{classControlAdv_abcf06279afa676bf65c35d50c6521c15}\label{classControlAdv_abcf06279afa676bf65c35d50c6521c15}} 
+double {\bfseries by\+T\+\_\+}
+\item 
+\mbox{\Hypertarget{classControlAdv_a3c7c48fe736574c6dcb360eb56371f44}\label{classControlAdv_a3c7c48fe736574c6dcb360eb56371f44}} 
+std\+::atomic$<$ bool $>$ {\bfseries gotbogievels\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+control\+Adv.\+h\item 
+control\+Adv.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,197 @@
+---------------------------------------------------------------------
+ A1 
+---------------------------------------------------------------------
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found GTest: /usr/src/gtest/libgtest.a  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/student/git/quiz1/pfms-2021s-MkJAS/quizzes/quiz1/a1/build
+Scanning dependencies of target personMarking
+[ 16%] Building CXX object marking/CMakeFiles/personMarking.dir/__/person.cpp.o
+[ 33%] Linking CXX static library libpersonMarking.a
+[ 33%] Built target personMarking
+Scanning dependencies of target processingMarking
+[ 50%] Building CXX object marking/CMakeFiles/processingMarking.dir/__/processing.cpp.o
+[ 66%] Linking CXX static library libprocessingMarking.a
+[ 66%] Built target processingMarking
+Scanning dependencies of target markingTest
+[ 83%] Building CXX object marking/CMakeFiles/markingTest.dir/utest.cpp.o
+[100%] Linking CXX executable markingTest
+[100%] Built target markingTest
+---------------------------------------------------------------------
+Running tests...
+Test project /home/student/git/quiz1/pfms-2021s-MkJAS/quizzes/quiz1/a1/build
+    Start 1: Q0A1
+1/1 Test #1: Q0A1 .............................***Failed    0.00 sec
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   0.00 sec
+
+The following tests FAILED:
+	  1 - Q0A1 (Failed)
+Makefile:83: recipe for target 'test' failed
+---------------------------------------------------------------------
+**********************************************************************
+[==========] Running 4 tests from 2 test cases.
+[----------] Global test environment set-up.
+[----------] 1 test from ClassTest
+[ RUN      ] ClassTest.CreateObject
+[       OK ] ClassTest.CreateObject (0 ms)
+[----------] 1 test from ClassTest (0 ms total)
+
+[----------] 3 tests from FunctionTest
+[ RUN      ] FunctionTest.CheckVacinated
+/home/student/git/quiz1/pfms-2021s-MkJAS/quizzes/quiz1/a1/marking/utest.cpp:21: Failure
+      Expected: alice.getVacinated()
+      Which is: false
+To be equal to: true
+[  FAILED  ] FunctionTest.CheckVacinated (0 ms)
+[ RUN      ] FunctionTest.DetectOldest
+/home/student/git/quiz1/pfms-2021s-MkJAS/quizzes/quiz1/a1/marking/utest.cpp:44: Failure
+      Expected: oldest.size()
+      Which is: 1
+To be equal to: 2
+unknown file: Failure
+C++ exception with description "vector::_M_range_check: __n (which is 1) >= this->size() (which is 1)" thrown in the test body.
+[  FAILED  ] FunctionTest.DetectOldest (0 ms)
+[ RUN      ] FunctionTest.DetectvacineEligibility
+/home/student/git/quiz1/pfms-2021s-MkJAS/quizzes/quiz1/a1/marking/utest.cpp:69: Failure
+Expected: (personsToVacinate.size()) >= (3), actual: 1 vs 3
+[  FAILED  ] FunctionTest.DetectvacineEligibility (0 ms)
+[----------] 3 tests from FunctionTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 4 tests from 2 test cases ran. (0 ms total)
+[  PASSED  ] 1 test.
+[  FAILED  ] 3 tests, listed below:
+[  FAILED  ] FunctionTest.CheckVacinated
+[  FAILED  ] FunctionTest.DetectOldest
+[  FAILED  ] FunctionTest.DetectvacineEligibility
+
+ 3 FAILED TESTS
+---------------------------------------------------------------------
+ A2 
+---------------------------------------------------------------------
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found GTest: /usr/src/gtest/libgtest.a  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/student/git/quiz1/pfms-2021s-MkJAS/quizzes/quiz1/a2/build
+**********************************************************************
+Making tests distributed with quiz
+----------------------------------------------------------------------
+Scanning dependencies of target shapesTesting
+[ 20%] Building CXX object marking/CMakeFiles/shapesTesting.dir/__/shape.cpp.o
+[ 40%] Building CXX object marking/CMakeFiles/shapesTesting.dir/__/rectangle.cpp.o
+[ 60%] Linking CXX static library libshapesTesting.a
+[ 60%] Built target shapesTesting
+Scanning dependencies of target selfTest
+[ 80%] Building CXX object marking/CMakeFiles/selfTest.dir/utest.cpp.o
+[100%] Linking CXX executable selfTest
+[100%] Built target selfTest
+----------------------------------------------------------------------
+Making marking tests v1 (constructor did not take description)
+----------------------------------------------------------------------
+[ 60%] Built target shapesTesting
+Scanning dependencies of target markingTestv1
+[ 80%] Building CXX object marking/CMakeFiles/markingTestv1.dir/utestv1.cpp.o
+marking/CMakeFiles/markingTestv1.dir/build.make:62: recipe for target 'marking/CMakeFiles/markingTestv1.dir/utestv1.cpp.o' failed
+CMakeFiles/Makefile2:239: recipe for target 'marking/CMakeFiles/markingTestv1.dir/all' failed
+CMakeFiles/Makefile2:251: recipe for target 'marking/CMakeFiles/markingTestv1.dir/rule' failed
+Makefile:181: recipe for target 'markingTestv1' failed
+----------------------------------------------------------------------
+Making marking tests v2 (constructor does take description)
+----------------------------------------------------------------------
+[ 60%] Built target shapesTesting
+Scanning dependencies of target markingTestv2
+[ 80%] Building CXX object marking/CMakeFiles/markingTestv2.dir/utestv2.cpp.o
+[100%] Linking CXX executable markingTestv2
+[100%] Built target markingTestv2
+---------------------------------------------------------------------
+Running all tests that have compiled
+---------------------------------------------------------------------
+Running tests...
+Test project /home/student/git/quiz1/pfms-2021s-MkJAS/quizzes/quiz1/a2/build
+    Start 1: Q1A2
+1/3 Test #1: Q1A2 .............................   Passed    0.00 sec
+    Start 2: Q1A2v1
+Could not find executable markingTestv1
+Looked in the following places:
+markingTestv1
+markingTestv1
+Release/markingTestv1
+Release/markingTestv1
+Debug/markingTestv1
+Debug/markingTestv1
+MinSizeRel/markingTestv1
+MinSizeRel/markingTestv1
+RelWithDebInfo/markingTestv1
+RelWithDebInfo/markingTestv1
+Deployment/markingTestv1
+Deployment/markingTestv1
+Development/markingTestv1
+Development/markingTestv1
+2/3 Test #2: Q1A2v1 ...........................***Not Run   0.00 sec
+    Start 3: Q1A2v2
+3/3 Test #3: Q1A2v2 ...........................   Passed    0.00 sec
+
+67% tests passed, 1 tests failed out of 3
+
+Total Test time (real) =   0.00 sec
+
+The following tests FAILED:
+	  2 - Q1A2v1 (Not Run)
+Makefile:83: recipe for target 'test' failed
+---------------------------------------------------------------------
+Executing tests distributed with quiz
+---------------------------------------------------------------------
+[==========] Running 1 test from 1 test case.
+[----------] Global test environment set-up.
+[----------] 1 test from ClassTest
+[ RUN      ] ClassTest.CreateObject
+[       OK ] ClassTest.CreateObject (0 ms)
+[----------] 1 test from ClassTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test case ran. (0 ms total)
+[  PASSED  ] 1 test.
+---------------------------------------------------------------------
+Executing marking tests v2 (constructor does take description)
+---------------------------------------------------------------------
+[==========] Running 1 test from 1 test case.
+[----------] Global test environment set-up.
+[----------] 1 test from ClassTest
+[ RUN      ] ClassTest.AlternativeConstructor
+[       OK ] ClassTest.AlternativeConstructor (0 ms)
+[----------] 1 test from ClassTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test case ran. (0 ms total)
+[  PASSED  ] 1 test.

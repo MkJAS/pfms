@@ -1,0 +1,305 @@
+\hypertarget{analysis_8h}{}\section{analysis.\+h File Reference}
+\label{analysis_8h}\index{analysis.\+h@{analysis.\+h}}
+
+
+The functions implemented to perform grabandfuse data function from rangerfusion along with caclulating the sonar union.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for analysis.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=141pt]{analysis_8h__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacegeometry__msgs}{geometry\+\_\+msgs}
+\begin{DoxyCompactList}\small\item\em Analysis header. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} \hyperlink{analysis_8h_ae465d194c4c7840a63d5795d8ae228dd}{Pointof\+Line\+Intersection} (\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} A, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} B, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} C, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} D)
+\begin{DoxyCompactList}\small\item\em Finds the intersection points of two lines given by the points AB and CD. \end{DoxyCompactList}\item 
+bool \hyperlink{analysis_8h_aa1d6670d93a84ed36cda29c39450a1f8}{Checkallsides} (\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} a, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} b, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} c, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} a1, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} b1, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} c1, std\+::vector$<$ \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} $>$ \&all\+\_\+\+P\+OI)
+\begin{DoxyCompactList}\small\item\em Checks if any side of sonar i intersects with any sides of sonar i+1 by calling Pointof\+Line\+Intersection for each pair of sides (9 pairs) \end{DoxyCompactList}\item 
+bool \hyperlink{analysis_8h_a0892990ee980096428256a73a16511eb}{is\+Inside\+Sonar} (\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} sonar\+Start, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} sonar\+Corner1, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} sonar\+Corner2, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} a)
+\begin{DoxyCompactList}\small\item\em Checks if any of the intersect points are inside the bounds of a sonar using Barycentric coordinate calculations. \end{DoxyCompactList}\item 
+bool \hyperlink{analysis_8h_a04059a15651de8b2e18573e2d80e81a4}{Laser\+Intersect} (\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} laser\+Start, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} laser\+End, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} a, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} b, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} c, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} d)
+\begin{DoxyCompactList}\small\item\em Using the functions below, function determines if the line between the two laser points intersects with any of the cell edges defines by ab,bc,cd,da. \end{DoxyCompactList}\item 
+bool \hyperlink{analysis_8h_a21bfb4cc97398db2005399cc44e241c8}{Sonar\+Occupied} (\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} sonar\+Start, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} sonar\+Corner, double theta, double sonarangle, double radius, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} a, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} b, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} c, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} d)
+\begin{DoxyCompactList}\small\item\em Establish a logic that if the sonar is to state a cell is O\+C\+C\+U\+P\+I\+ED, that the curve of the sonar, or the end of the cone M\+U\+ST then exist within the bounds of the cell. In this case, we implement a function in which it obtains points along the curve and checks if any of these points lie within a set margin around the cells edges. \end{DoxyCompactList}\item 
+bool \hyperlink{analysis_8h_a07d7df90c424ace5027d3df90f391692}{Sonar\+Free} (double theta, double radius, double sonarangle, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} sonar\+Start, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} sonar\+Corner, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} a, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} b)
+\begin{DoxyCompactList}\small\item\em Essentially, by converting the cell corner points into polar coordinates, a cell corner exists within the bounds of a sonar if the corner is a distance from the sonar start that is less than the sonar reading (radius) A\+ND the corner point is also within the 2 angle ranges from the positive x axis set by the 2 sonar edges E.\+g a sonar with 20 deg F\+OV facing forward along y axis would set angle bounds between 100 and 80 degrees If a cell corner exists W\+I\+T\+H\+IN the sonar bounds B\+UT is N\+OT found to be occupied it must then be F\+R\+EE. \end{DoxyCompactList}\item 
+bool \hyperlink{analysis_8h_a129954038a3a9bb384bc48a70a817f22}{on\+Segment} (\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} p, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} q, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} r)
+\begin{DoxyCompactList}\small\item\em Given three colinear points p, q, r, the function checks if point q lies on line segment \textquotesingle{}pr\textquotesingle{}. \end{DoxyCompactList}\item 
+double \hyperlink{analysis_8h_a58d731f1cd01e3cf2b75ed25500a23d9}{orientation} (\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} p, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} q, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} r)
+\begin{DoxyCompactList}\small\item\em To find orientation of ordered triplet (p, q, r). \end{DoxyCompactList}\item 
+bool \hyperlink{analysis_8h_a89bd4ef12d2b7281c3a2b9b819d330be}{do\+Intersect} (\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} p1, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} q1, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} p2, \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} q2)
+\begin{DoxyCompactList}\small\item\em Function that returns true if line segment \textquotesingle{}p1q1\textquotesingle{} intersects \textquotesingle{}p2q2\textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The functions implemented to perform grabandfuse data function from rangerfusion along with caclulating the sonar union. 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{analysis_8h_aa1d6670d93a84ed36cda29c39450a1f8}\label{analysis_8h_aa1d6670d93a84ed36cda29c39450a1f8}} 
+\index{analysis.\+h@{analysis.\+h}!Checkallsides@{Checkallsides}}
+\index{Checkallsides@{Checkallsides}!analysis.\+h@{analysis.\+h}}
+\subsubsection{\texorpdfstring{Checkallsides()}{Checkallsides()}}
+{\footnotesize\ttfamily bool Checkallsides (\begin{DoxyParamCaption}\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{a,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{b,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{c,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{a1,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{b1,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{c1,  }\item[{std\+::vector$<$ \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} $>$ \&}]{all\+\_\+\+P\+OI }\end{DoxyParamCaption})}
+
+
+
+Checks if any side of sonar i intersects with any sides of sonar i+1 by calling Pointof\+Line\+Intersection for each pair of sides (9 pairs) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & 3 sides of sonar i \\
+\hline
+{\em b} & \\
+\hline
+{\em c} & \\
+\hline
+{\em a1} & 3 sides of sonar i+1 \\
+\hline
+{\em b1} & \\
+\hline
+{\em c1} & \\
+\hline
+{\em all\+\_\+\+P\+OI} & vector containing all points of intersection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true returns true to indicate that the sonar does intersect with another sonar 
+
+false returns false to indicate that the sonar does N\+OT intersect with another sonar 
+\end{DoxyReturn}
+\mbox{\Hypertarget{analysis_8h_a89bd4ef12d2b7281c3a2b9b819d330be}\label{analysis_8h_a89bd4ef12d2b7281c3a2b9b819d330be}} 
+\index{analysis.\+h@{analysis.\+h}!do\+Intersect@{do\+Intersect}}
+\index{do\+Intersect@{do\+Intersect}!analysis.\+h@{analysis.\+h}}
+\subsubsection{\texorpdfstring{do\+Intersect()}{doIntersect()}}
+{\footnotesize\ttfamily bool do\+Intersect (\begin{DoxyParamCaption}\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{p1,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{q1,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{p2,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{q2 }\end{DoxyParamCaption})}
+
+
+
+Function that returns true if line segment \textquotesingle{}p1q1\textquotesingle{} intersects \textquotesingle{}p2q2\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p1} & first point of line 1 \\
+\hline
+{\em q1} & second point of line 1 \\
+\hline
+{\em p2} & first point of line 2 \\
+\hline
+{\em q2} & second point of line 2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean indicating lines intersect 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+atttribution to \href{https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/}{\tt https\+://www.\+geeksforgeeks.\+org/check-\/if-\/two-\/given-\/line-\/segments-\/intersect/} 
+\end{DoxyNote}
+\mbox{\Hypertarget{analysis_8h_a0892990ee980096428256a73a16511eb}\label{analysis_8h_a0892990ee980096428256a73a16511eb}} 
+\index{analysis.\+h@{analysis.\+h}!is\+Inside\+Sonar@{is\+Inside\+Sonar}}
+\index{is\+Inside\+Sonar@{is\+Inside\+Sonar}!analysis.\+h@{analysis.\+h}}
+\subsubsection{\texorpdfstring{is\+Inside\+Sonar()}{isInsideSonar()}}
+{\footnotesize\ttfamily bool is\+Inside\+Sonar (\begin{DoxyParamCaption}\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{sonar\+Start,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{sonar\+Corner1,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{sonar\+Corner2,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{a }\end{DoxyParamCaption})}
+
+
+
+Checks if any of the intersect points are inside the bounds of a sonar using Barycentric coordinate calculations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sonar\+Start} & \\
+\hline
+{\em sonar\+Corner1} & \\
+\hline
+{\em sonar\+Corner2} & \\
+\hline
+{\em a} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{analysis_8h_a04059a15651de8b2e18573e2d80e81a4}\label{analysis_8h_a04059a15651de8b2e18573e2d80e81a4}} 
+\index{analysis.\+h@{analysis.\+h}!Laser\+Intersect@{Laser\+Intersect}}
+\index{Laser\+Intersect@{Laser\+Intersect}!analysis.\+h@{analysis.\+h}}
+\subsubsection{\texorpdfstring{Laser\+Intersect()}{LaserIntersect()}}
+{\footnotesize\ttfamily bool Laser\+Intersect (\begin{DoxyParamCaption}\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{laser\+Start,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{laser\+End,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{a,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{b,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{c,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{d }\end{DoxyParamCaption})}
+
+
+
+Using the functions below, function determines if the line between the two laser points intersects with any of the cell edges defines by ab,bc,cd,da. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em laser\+Start} & \\
+\hline
+{\em laser\+End} & \\
+\hline
+{\em a} & \\
+\hline
+{\em b} & \\
+\hline
+{\em c} & \\
+\hline
+{\em d} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{analysis_8h_a129954038a3a9bb384bc48a70a817f22}\label{analysis_8h_a129954038a3a9bb384bc48a70a817f22}} 
+\index{analysis.\+h@{analysis.\+h}!on\+Segment@{on\+Segment}}
+\index{on\+Segment@{on\+Segment}!analysis.\+h@{analysis.\+h}}
+\subsubsection{\texorpdfstring{on\+Segment()}{onSegment()}}
+{\footnotesize\ttfamily bool on\+Segment (\begin{DoxyParamCaption}\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{p,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{q,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{r }\end{DoxyParamCaption})}
+
+
+
+Given three colinear points p, q, r, the function checks if point q lies on line segment \textquotesingle{}pr\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & colinear point \\
+\hline
+{\em q} & colinear point \\
+\hline
+{\em r} & colinear point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean indicating point q lies on line segment \textquotesingle{}pr\textquotesingle{} 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+atttribution to \href{https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/}{\tt https\+://www.\+geeksforgeeks.\+org/check-\/if-\/two-\/given-\/line-\/segments-\/intersect/} 
+\end{DoxyNote}
+\mbox{\Hypertarget{analysis_8h_a58d731f1cd01e3cf2b75ed25500a23d9}\label{analysis_8h_a58d731f1cd01e3cf2b75ed25500a23d9}} 
+\index{analysis.\+h@{analysis.\+h}!orientation@{orientation}}
+\index{orientation@{orientation}!analysis.\+h@{analysis.\+h}}
+\subsubsection{\texorpdfstring{orientation()}{orientation()}}
+{\footnotesize\ttfamily double orientation (\begin{DoxyParamCaption}\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{p,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{q,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{r }\end{DoxyParamCaption})}
+
+
+
+To find orientation of ordered triplet (p, q, r). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & point \\
+\hline
+{\em q} & point \\
+\hline
+{\em r} & point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean 0 --$>$ p, q and r are colinear 1 --$>$ Clockwise 2 --$>$ Counterclockwise 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+atttribution to \href{https://www.geeksforgeeks.org/check-if-two-given-line-segments-intersect/}{\tt https\+://www.\+geeksforgeeks.\+org/check-\/if-\/two-\/given-\/line-\/segments-\/intersect/} 
+\end{DoxyNote}
+\mbox{\Hypertarget{analysis_8h_ae465d194c4c7840a63d5795d8ae228dd}\label{analysis_8h_ae465d194c4c7840a63d5795d8ae228dd}} 
+\index{analysis.\+h@{analysis.\+h}!Pointof\+Line\+Intersection@{Pointof\+Line\+Intersection}}
+\index{Pointof\+Line\+Intersection@{Pointof\+Line\+Intersection}!analysis.\+h@{analysis.\+h}}
+\subsubsection{\texorpdfstring{Pointof\+Line\+Intersection()}{PointofLineIntersection()}}
+{\footnotesize\ttfamily \hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} Pointof\+Line\+Intersection (\begin{DoxyParamCaption}\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{A,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{B,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{C,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{D }\end{DoxyParamCaption})}
+
+
+
+Finds the intersection points of two lines given by the points AB and CD. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & \\
+\hline
+{\em B} & \\
+\hline
+{\em C} & \\
+\hline
+{\em D} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point} intersection points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{analysis_8h_a07d7df90c424ace5027d3df90f391692}\label{analysis_8h_a07d7df90c424ace5027d3df90f391692}} 
+\index{analysis.\+h@{analysis.\+h}!Sonar\+Free@{Sonar\+Free}}
+\index{Sonar\+Free@{Sonar\+Free}!analysis.\+h@{analysis.\+h}}
+\subsubsection{\texorpdfstring{Sonar\+Free()}{SonarFree()}}
+{\footnotesize\ttfamily bool Sonar\+Free (\begin{DoxyParamCaption}\item[{double}]{theta,  }\item[{double}]{radius,  }\item[{double}]{sonarangle,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{sonar\+Start,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{sonar\+Corner,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{a,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{b }\end{DoxyParamCaption})}
+
+
+
+Essentially, by converting the cell corner points into polar coordinates, a cell corner exists within the bounds of a sonar if the corner is a distance from the sonar start that is less than the sonar reading (radius) A\+ND the corner point is also within the 2 angle ranges from the positive x axis set by the 2 sonar edges E.\+g a sonar with 20 deg F\+OV facing forward along y axis would set angle bounds between 100 and 80 degrees If a cell corner exists W\+I\+T\+H\+IN the sonar bounds B\+UT is N\+OT found to be occupied it must then be F\+R\+EE. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em theta} & \\
+\hline
+{\em radius} & \\
+\hline
+{\em sonarangle} & \\
+\hline
+{\em sonar\+Start} & \\
+\hline
+{\em sonar\+Corner} & \\
+\hline
+{\em a} & \\
+\hline
+{\em b} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{analysis_8h_a21bfb4cc97398db2005399cc44e241c8}\label{analysis_8h_a21bfb4cc97398db2005399cc44e241c8}} 
+\index{analysis.\+h@{analysis.\+h}!Sonar\+Occupied@{Sonar\+Occupied}}
+\index{Sonar\+Occupied@{Sonar\+Occupied}!analysis.\+h@{analysis.\+h}}
+\subsubsection{\texorpdfstring{Sonar\+Occupied()}{SonarOccupied()}}
+{\footnotesize\ttfamily bool Sonar\+Occupied (\begin{DoxyParamCaption}\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{sonar\+Start,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{sonar\+Corner,  }\item[{double}]{theta,  }\item[{double}]{sonarangle,  }\item[{double}]{radius,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{a,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{b,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{c,  }\item[{\hyperlink{structgeometry__msgs_1_1Point}{geometry\+\_\+msgs\+::\+Point}}]{d }\end{DoxyParamCaption})}
+
+
+
+Establish a logic that if the sonar is to state a cell is O\+C\+C\+U\+P\+I\+ED, that the curve of the sonar, or the end of the cone M\+U\+ST then exist within the bounds of the cell. In this case, we implement a function in which it obtains points along the curve and checks if any of these points lie within a set margin around the cells edges. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sonar\+Start} & \\
+\hline
+{\em sonar\+Corner} & \\
+\hline
+{\em a} & top left corner \\
+\hline
+{\em b} & bottom left corner \\
+\hline
+{\em c} & bottom right corner \\
+\hline
+{\em d} & top right corner \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}

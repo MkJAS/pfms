@@ -1,0 +1,8 @@
+prefix=/home/student/catkin_ws/devel
+
+Name: pfms_path_following
+Description: Description of pfms_path_following
+Version: 1.0.1
+Cflags: -I/home/student/catkin_ws/src/a4_path_following/include
+Libs: -L${prefix}/lib -ldrawing_tools
+Requires: roscpp sensor_msgs std_msgs

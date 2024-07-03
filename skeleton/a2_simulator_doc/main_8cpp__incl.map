@@ -1,0 +1,7 @@
+<map id="main.cpp" name="main.cpp">
+<area shape="rect" id="node5" href="$simulator_8h.html" title="Simulator for assignment 2. " alt="" coords="383,80,470,107"/>
+<area shape="rect" id="node8" href="$types_8h.html" title="Collection of simple types used by the simulator class. Types are now related to ROS messages..." alt="" coords="607,229,673,256"/>
+<area shape="rect" id="node10" href="$tf_8h.html" title="Collection of transforms between quaterion and yaw. " alt="" coords="631,155,673,181"/>
+<area shape="rect" id="node11" href="$timer_8h.html" title="A class for measuring periods of time. " alt="" coords="203,229,266,256"/>
+<area shape="rect" id="node13" href="$aircraft_8h.html" title="Aircraft specific structure used for simulator. Students could, but not necessarily need to use this ..." alt="" coords="482,155,555,181"/>
+</map>

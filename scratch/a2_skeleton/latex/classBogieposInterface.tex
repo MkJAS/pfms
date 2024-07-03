@@ -1,0 +1,194 @@
+\hypertarget{classBogieposInterface}{}\section{Bogiepos\+Interface Class Reference}
+\label{classBogieposInterface}\index{Bogiepos\+Interface@{Bogiepos\+Interface}}
+
+
+Bogpieposition Interface Class.  
+
+
+
+
+{\ttfamily \#include $<$bogieposinterface.\+h$>$}
+
+
+
+Collaboration diagram for Bogiepos\+Interface\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classBogieposInterface__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a2a1a87b14e16f622d5acb694c9b9fcc0}\label{classBogieposInterface_a2a1a87b14e16f622d5acb694c9b9fcc0}} 
+virtual void \hyperlink{classBogieposInterface_a2a1a87b14e16f622d5acb694c9b9fcc0}{start} ()=0
+\begin{DoxyCompactList}\small\item\em starts threads \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ Point, double $>$ $>$ \hyperlink{classBogieposInterface_aed3b03940731c8235e29795bdc493bbd}{getbogiefriendly} ()
+\begin{DoxyCompactList}\small\item\em Returns bogie positions in x,y from friendly frame of reference. Where the Point holds the x and y coords, z as range and the double is the angle to the bogie. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ Point, double $>$ $>$ \hyperlink{classBogieposInterface_a0b8ba02bf6deb7b647f075e838bbbca9}{getbogieglobal} ()
+\begin{DoxyCompactList}\small\item\em Returns bogie positions in global frame of reference as a vector of points. \end{DoxyCompactList}\item 
+std\+::pair$<$ Point, double $>$ \hyperlink{classBogieposInterface_a730cb8dcbd3c42a19b6f6350ec1e3999}{getfriendlyxy0} ()
+\begin{DoxyCompactList}\small\item\em Gets the friendly orientation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBogieposInterface_af3e26b24f89b107056e086ed0bc5e1c1}\label{classBogieposInterface_af3e26b24f89b107056e086ed0bc5e1c1}} 
+void \hyperlink{classBogieposInterface_af3e26b24f89b107056e086ed0bc5e1c1}{getfriendinfo} ()
+\begin{DoxyCompactList}\small\item\em Synchronises obtaining friendly info from sim using mutex. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBogieposInterface_a4cdda06dbe106fa960365d9f59ba572f}\label{classBogieposInterface_a4cdda06dbe106fa960365d9f59ba572f}} 
+void \hyperlink{classBogieposInterface_a4cdda06dbe106fa960365d9f59ba572f}{calcbogieglobalandfriendly} ()
+\begin{DoxyCompactList}\small\item\em Top level thread that calls other functions above to calculate both bogies x,y in global and local frames of reference. \end{DoxyCompactList}\item 
+std\+::pair$<$ Point, double $>$ \hyperlink{classBogieposInterface_a0d6962250b64da519be1e8ac46a7afa7}{calcglobalxy} (Point rngbr, Point pos\+\_\+frnd, double theta)
+\begin{DoxyCompactList}\small\item\em Calculates the global x and y based off local frame of reference and location. \end{DoxyCompactList}\item 
+Point \hyperlink{classBogieposInterface_abdbf2caf087cb39dcf35700ecf9128bd}{calcfrndxy} (std\+::pair$<$ double, double $>$ rngbr)
+\begin{DoxyCompactList}\small\item\em Calculates the x,y of bogie from friendly frame of reference. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a5e1fd43a4b2bf930fc62e933282bec19}\label{classBogieposInterface_a5e1fd43a4b2bf930fc62e933282bec19}} 
+std\+::atomic$<$ bool $>$ {\bfseries globalbogiesgot\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a861afcebc5fb09e17f2e3b32922c9678}\label{classBogieposInterface_a861afcebc5fb09e17f2e3b32922c9678}} 
+std\+::atomic$<$ bool $>$ \hyperlink{classBogieposInterface_a861afcebc5fb09e17f2e3b32922c9678}{friendbogiesgot\+\_\+}
+\begin{DoxyCompactList}\small\item\em test \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBogieposInterface_a5caf6590a0e805f00fcfd472d48130ed}\label{classBogieposInterface_a5caf6590a0e805f00fcfd472d48130ed}} 
+std\+::atomic$<$ bool $>$ {\bfseries flying}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a408d1de1da6941e99911a9af9f9875e2}\label{classBogieposInterface_a408d1de1da6941e99911a9af9f9875e2}} 
+std\+::atomic$<$ bool $>$ {\bfseries friendly\+\_\+info}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a80006e18bc4928eccc493937c891ce7c}\label{classBogieposInterface_a80006e18bc4928eccc493937c891ce7c}} 
+std\+::shared\+\_\+ptr$<$ Simulator $>$ {\bfseries sim\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a1ce4e6797926bb18ef24c6bdd7372093}\label{classBogieposInterface_a1ce4e6797926bb18ef24c6bdd7372093}} 
+std\+::vector$<$ std\+::pair$<$ Point, double $>$ $>$ {\bfseries frnd\+\_\+bogies\+\_\+pos\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a3d4d80384d8372890c53068ccac2f734}\label{classBogieposInterface_a3d4d80384d8372890c53068ccac2f734}} 
+std\+::vector$<$ std\+::pair$<$ Point, double $>$ $>$ {\bfseries glb\+\_\+bogies\+\_\+pos\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a3a77385b1c98cf6047dd8c5ba880b19a}\label{classBogieposInterface_a3a77385b1c98cf6047dd8c5ba880b19a}} 
+std\+::vector$<$ Range\+Bearing\+Stamped $>$ {\bfseries rbf\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a033c04b5ccf5753d998d429ca3d9e557}\label{classBogieposInterface_a033c04b5ccf5753d998d429ca3d9e557}} 
+Point {\bfseries pos\+\_\+friend\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a8e8826e05c8ac240093b2278e241579f}\label{classBogieposInterface_a8e8826e05c8ac240093b2278e241579f}} 
+double {\bfseries friend\+\_\+theta\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_afeb37637f67ddeb44bfa8916c512e5d5}\label{classBogieposInterface_afeb37637f67ddeb44bfa8916c512e5d5}} 
+std\+::vector$<$ std\+::thread $>$ {\bfseries threads\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a91170e4a4f7b4b1b5ce8af5070e48162}\label{classBogieposInterface_a91170e4a4f7b4b1b5ce8af5070e48162}} 
+std\+::condition\+\_\+variable {\bfseries cv\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a721c81d1b0c28dd1849b311654bcc427}\label{classBogieposInterface_a721c81d1b0c28dd1849b311654bcc427}} 
+std\+::condition\+\_\+variable {\bfseries F\+Bcv\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_afd6361c4d8c896f52eddfffaca18df6b}\label{classBogieposInterface_afd6361c4d8c896f52eddfffaca18df6b}} 
+std\+::condition\+\_\+variable {\bfseries G\+Bcv\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a01943e42e9d6279885f51de115158db9}\label{classBogieposInterface_a01943e42e9d6279885f51de115158db9}} 
+std\+::mutex {\bfseries mtx\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposInterface_a013edcb6bc5eb8b238b307fe71594230}\label{classBogieposInterface_a013edcb6bc5eb8b238b307fe71594230}} 
+std\+::mutex {\bfseries mtx2\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Bogpieposition Interface Class. 
+
+This interface class is used to set all the methods that need to be embodies within any subsequent derived sensor classes. \begin{DoxyAuthor}{Author}
+Joseph Seklawy 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/10-\/07 
+\end{DoxyDate}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBogieposInterface_abdbf2caf087cb39dcf35700ecf9128bd}\label{classBogieposInterface_abdbf2caf087cb39dcf35700ecf9128bd}} 
+\index{Bogiepos\+Interface@{Bogiepos\+Interface}!calcfrndxy@{calcfrndxy}}
+\index{calcfrndxy@{calcfrndxy}!Bogiepos\+Interface@{Bogiepos\+Interface}}
+\subsubsection{\texorpdfstring{calcfrndxy()}{calcfrndxy()}}
+{\footnotesize\ttfamily Point Bogiepos\+Interface\+::calcfrndxy (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$}]{rngbr }\end{DoxyParamCaption})}
+
+
+
+Calculates the x,y of bogie from friendly frame of reference. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rngbr} & Pair holding range/bearing from sim function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Point 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBogieposInterface_a0d6962250b64da519be1e8ac46a7afa7}\label{classBogieposInterface_a0d6962250b64da519be1e8ac46a7afa7}} 
+\index{Bogiepos\+Interface@{Bogiepos\+Interface}!calcglobalxy@{calcglobalxy}}
+\index{calcglobalxy@{calcglobalxy}!Bogiepos\+Interface@{Bogiepos\+Interface}}
+\subsubsection{\texorpdfstring{calcglobalxy()}{calcglobalxy()}}
+{\footnotesize\ttfamily std\+::pair$<$Point,double$>$ Bogiepos\+Interface\+::calcglobalxy (\begin{DoxyParamCaption}\item[{Point}]{rngbr,  }\item[{Point}]{pos\+\_\+frnd,  }\item[{double}]{theta }\end{DoxyParamCaption})}
+
+
+
+Calculates the global x and y based off local frame of reference and location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rngbr} & Pair holding the range/bearing from sim function \\
+\hline
+{\em pos\+\_\+frnd} & position of friendly in global x,y \\
+\hline
+{\em theta} & orientation of friendly in global frame \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$\+Point,double$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBogieposInterface_aed3b03940731c8235e29795bdc493bbd}\label{classBogieposInterface_aed3b03940731c8235e29795bdc493bbd}} 
+\index{Bogiepos\+Interface@{Bogiepos\+Interface}!getbogiefriendly@{getbogiefriendly}}
+\index{getbogiefriendly@{getbogiefriendly}!Bogiepos\+Interface@{Bogiepos\+Interface}}
+\subsubsection{\texorpdfstring{getbogiefriendly()}{getbogiefriendly()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::pair$<$Point,double$>$ $>$ Bogiepos\+Interface\+::getbogiefriendly (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns bogie positions in x,y from friendly frame of reference. Where the Point holds the x and y coords, z as range and the double is the angle to the bogie. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::pair$<$\+Point,double$>$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBogieposInterface_a0b8ba02bf6deb7b647f075e838bbbca9}\label{classBogieposInterface_a0b8ba02bf6deb7b647f075e838bbbca9}} 
+\index{Bogiepos\+Interface@{Bogiepos\+Interface}!getbogieglobal@{getbogieglobal}}
+\index{getbogieglobal@{getbogieglobal}!Bogiepos\+Interface@{Bogiepos\+Interface}}
+\subsubsection{\texorpdfstring{getbogieglobal()}{getbogieglobal()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::pair$<$Point,double$>$ $>$ Bogiepos\+Interface\+::getbogieglobal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns bogie positions in global frame of reference as a vector of points. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$\+Point$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBogieposInterface_a730cb8dcbd3c42a19b6f6350ec1e3999}\label{classBogieposInterface_a730cb8dcbd3c42a19b6f6350ec1e3999}} 
+\index{Bogiepos\+Interface@{Bogiepos\+Interface}!getfriendlyxy0@{getfriendlyxy0}}
+\index{getfriendlyxy0@{getfriendlyxy0}!Bogiepos\+Interface@{Bogiepos\+Interface}}
+\subsubsection{\texorpdfstring{getfriendlyxy0()}{getfriendlyxy0()}}
+{\footnotesize\ttfamily std\+::pair$<$Point,double$>$ Bogiepos\+Interface\+::getfriendlyxy0 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the friendly orientation. 
+
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$\+Point,double$>$ 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+bogieposinterface.\+h\end{DoxyCompactItemize}

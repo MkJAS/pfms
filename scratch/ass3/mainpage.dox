@@ -1,0 +1,64 @@
+/** \mainpage
+@author Joseph Seklawy 12578845
+
+@htmlinclude manifest.html
+
+@section package The Assignment3 package - project4
+
+The package contains a single node `ass3` which is part of the `ass3_ex` executable. It also contains a library named ass3_lib and unit tests included for the library
+
+The ass3_ex
+- leverages @ref main.cpp to create an instance of @ref TopicHandler class
+- The @ref TopicHandler class handles all the neccessary topic subscriptions and callbacks. These are the 4 following, @ref TopicHandler::odomCallback0 (listening to robot_0/odom), @ref TopicHandler::odomCallback1 (listening to robot_1/odom), @ref TopicHandler::laserCallback (listening to robot_0/base_scan) and @ref TopicHandler::occupancyGridCallback (listening to local_map/local_map)
+- @ref main.cpp also creates a thread @ref TopicHandler.seperatethread  which runs at 0.5Hz (every 2s) and is responsible for taking the data recieved from the topics, collecting it and then passing it to the other class @ref FnF (@ref findnfollow.cpp) and @ref FnFadv (@ref findnfollow_adv.cpp)
+
+
+@section usage Starting the node
+
+You'll need to start a roscore, and then need to start the project_setup package along with the path following node, as follows;<br>
+```
+roslaunch project_setup project_setup.launch
+rosrun pfms_path_following pfms_path_following-velocity_control 
+rosrun ass3 ass3_ex _mode:=1
+```
+The "_mode:=1" term sets the node mode. 1 = basic mode and 2 = advanced mode. Any other numbers should result in basic mode.
+
+@section behaviour Code inner workings
+
+The ass3_ex node with it's respective publishers and subscriber topics;
+
+\image html doc/pic/rosgraph.png width=50%
+
+There is a single thread in the @ref TopicHandler class which runs at 0.1Hz (every 10s) and on each loop it
+ - Obtains latest OccupancyGrid grid (via mutex), robot_0 odom and robot_1 odom info as well as the laser base scan from robot_0
+ - It then collects all these messages and passes it all to either the @ref FnF class or the @ref FnFadv depending on the mode
+ - From there the findnfollow class will begin processing the data and acting accordingly
+
+@subsection FindnFollow 
+
+Once data from @ref TopicHandler is sent to the class via @ref FnFint.setData, a cv notify is called which kicks things off;
+ - The @ref FnFint.cv_ notifies the @ref FnFint.search function which begins the search for robot1, which itself calls the @ref FnFint.IsinLoS function which checks if robot1 is within line of sight of robot0
+ - Once robot_1 is in LoS a boolean is set which exists the search loop and allows the @ref FnF.following thread to begin
+ - The following thread simply uses the robot_1 odom and to obtain poses to then send to robot_0 so that it can follow robot_1 around
+ - Basic and Advanced mode differ slightly here;
+    - Basic: a circle of radius 1 is calculated around robot_1 and robot_0 moves to the closest point along this circle and will remain at that distance until robot_1 moves again
+    - Advanced: robot_0 will try to remain about 0.7m directly behind robot_1. If robot_1 is still for 10 sec or more, robot_0 will move to the left/right side of robot_1 and assume the same orientation 
+
+@section Notes
+
+ - There is a delay during the search phase of robot_0 function, so in order for it to detect robot_1 as in line of sight
+    robot_1 must stay in line of sight for at least a second
+ - The @ref FnFint.goaround functions has been tested on corridors mostly, as such its success in navigating around other obstacles
+    or through doorways is unknown
+
+@section Bugs Known Bugs
+
+ - There are some cases where the code fails due to lack of clarity within the Ogmap. In some cases when r1 goes around a corner
+   and r0 hasnt seen whats around that corner the code fails due to its reliability on the Ogmap.
+      -This issue was discovered close to the deadline and thus a fix wasnt implemented. A thought up fix would use the laser to follow along the wall until r1 comes into sight again
+ - Sometimes when no parameter is passed to the node upon launch, instead of defaulting to basic mode it will default to the last selected mode
+      -I haven't seen this bug occur again but its possible it may still happen so to avoid always pass a parameter
+ - Not so much a bug but this code was developed around the concept of going around corners in corridors. If robot1 was to quickly move through
+   many different rooms its very likely that the code will break down and robot0 will begin pathing randomly 
+*/
+

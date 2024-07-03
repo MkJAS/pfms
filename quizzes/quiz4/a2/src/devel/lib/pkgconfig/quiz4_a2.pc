@@ -1,0 +1,8 @@
+prefix=/home/joseph/catkin_ws/src/a2/src/devel
+
+Name: quiz4_a2
+Description: Description of quiz4_a2
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

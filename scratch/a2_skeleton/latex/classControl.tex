@@ -1,0 +1,283 @@
+\hypertarget{classControl}{}\section{Control Class Reference}
+\label{classControl}\index{Control@{Control}}
+
+
+Inheritance diagram for Control\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{classControl__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControl_a343774819922207def027e98b0bc3198}\label{classControl_a343774819922207def027e98b0bc3198}} 
+{\bfseries Control} (std\+::shared\+\_\+ptr$<$ Simulator $>$ \&sim)
+\item 
+\mbox{\Hypertarget{classControl_a933994a3524f2f6d7ef0a17086e7cf66}\label{classControl_a933994a3524f2f6d7ef0a17086e7cf66}} 
+virtual void \hyperlink{classControl_a933994a3524f2f6d7ef0a17086e7cf66}{start} ()
+\begin{DoxyCompactList}\small\item\em starts threads \end{DoxyCompactList}\item 
+bool \hyperlink{classControl_af7401b14ae40f38234d29b6adaf5d8a6}{getrestart} ()
+\begin{DoxyCompactList}\small\item\em Public getter called in main once 4 bogies have been intercepted to allow for new readings to be recieved. \end{DoxyCompactList}\item 
+virtual void \hyperlink{classControl_aff1c1cb4117bcdff659978feb6d45a8f}{setbogiexyth} (std\+::vector$<$ std\+::pair$<$ Point, double $>$$>$ \&bogiexyth, std\+::vector$<$ std\+::pair$<$ Point, double $>$$>$ \&bogieglb, std\+::pair$<$ Point, double $>$ frnd, std\+::map$<$ int, Point $>$ map)
+\begin{DoxyCompactList}\small\item\em Called in the main to take data from \hyperlink{classBogiepos}{Bogiepos} class into object of this class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControl_a11fd8f10f43a8375262c0b1cc34d73ff}\label{classControl_a11fd8f10f43a8375262c0b1cc34d73ff}} 
+void {\bfseries move} ()
+\item 
+\mbox{\Hypertarget{classControl_a4e088c3e3a959fa80b2055a615ee946e}\label{classControl_a4e088c3e3a959fa80b2055a615ee946e}} 
+void \hyperlink{classControl_a4e088c3e3a959fa80b2055a615ee946e}{idle} ()
+\begin{DoxyCompactList}\small\item\em Ensures watchdog timer is satisfied. \end{DoxyCompactList}\item 
+void \hyperlink{classControl_aa18094ca515f8dbcdff94e0b7a60a88a}{command} (double lin, double ang)
+\begin{DoxyCompactList}\small\item\em issues velocity commands \end{DoxyCompactList}\item 
+void \hyperlink{classControl_a9bfe498567206c176b0e23d71708d6e3}{calcpath} ()
+\begin{DoxyCompactList}\small\item\em Main thread calculates bogie order via graph search. \end{DoxyCompactList}\item 
+void \hyperlink{classControl_af846dd07501030d430893f17cd4a4178}{getoptimalpath} (std\+::vector$<$ int $>$ \&optpath)
+\begin{DoxyCompactList}\small\item\em function inside \hyperlink{classControl_a9bfe498567206c176b0e23d71708d6e3}{calcpath()} \end{DoxyCompactList}\item 
+double \hyperlink{classControl_a57ae0e13099f01e27fe5afc0765bc611}{wrapalpha} (double alpha)
+\begin{DoxyCompactList}\small\item\em wraps angle between 0-\/\+PI or -\/\+P\+I-\/0 \end{DoxyCompactList}\item 
+double \hyperlink{classControl_a3535c9d84af21822fe3b5318391092b1}{relate\+Orientto\+B\+Bangle} (double orient, double bearing)
+\begin{DoxyCompactList}\small\item\em Relates the bearing angle of a bogie from base to the needed friendly orientation to be pointed at the bogie. \end{DoxyCompactList}\item 
+int \hyperlink{classControl_a3b1ef3f00ba7fdee871d352d7d5f546e}{graphsearch} (int node, double \&quickest\+\_\+time, double \&current\+\_\+orient)
+\begin{DoxyCompactList}\small\item\em Graph search function called in optpath. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControl_a1282c47a9b0a0b6b9d5c19dd4cfa2764}\label{classControl_a1282c47a9b0a0b6b9d5c19dd4cfa2764}} 
+virtual void \hyperlink{classControl_a1282c47a9b0a0b6b9d5c19dd4cfa2764}{optvelocities} ()
+\begin{DoxyCompactList}\small\item\em Calculates the needed linear and angular velocites to achieve the pure pursuit gamma function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControl_abdb51463e49b88bde90c97c2c72d3148}\label{classControl_abdb51463e49b88bde90c97c2c72d3148}} 
+std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ {\bfseries rangebearassociate} (std\+::vector$<$ Range\+Bearing\+Stamped $>$ rbs, Point friendxy)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classControl_a603378c110983f3c855df10bfe525c8e}\label{classControl_a603378c110983f3c855df10bfe525c8e}} 
+std\+::mutex {\bfseries mtxpos\+\_\+}
+\item 
+\mbox{\Hypertarget{classControl_aab035f20a9ed6ef18761e9fad3403b79}\label{classControl_aab035f20a9ed6ef18761e9fad3403b79}} 
+std\+::mutex \hyperlink{classControl_aab035f20a9ed6ef18761e9fad3403b79}{Cmdmtx\+\_\+}
+\begin{DoxyCompactList}\small\item\em mutex for cv\+\_\+ convar \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControl_a2e77b6aaf947cb52490bb0ae6fbbc404}\label{classControl_a2e77b6aaf947cb52490bb0ae6fbbc404}} 
+std\+::mutex \hyperlink{classControl_a2e77b6aaf947cb52490bb0ae6fbbc404}{Velmtx\+\_\+}
+\begin{DoxyCompactList}\small\item\em command mutex, used for sending move commands via lin\+\_\+vel\+\_\+ and ang\+\_\+vel\+\_\+ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControl_aec807365dbda609b3d3df8f8e9a3b565}\label{classControl_aec807365dbda609b3d3df8f8e9a3b565}} 
+std\+::condition\+\_\+variable {\bfseries cv\+\_\+}
+\item 
+\mbox{\Hypertarget{classControl_aa8fb0e7eb4a78e85d07cecb3c95d47f9}\label{classControl_aa8fb0e7eb4a78e85d07cecb3c95d47f9}} 
+std\+::condition\+\_\+variable \hyperlink{classControl_aa8fb0e7eb4a78e85d07cecb3c95d47f9}{Movecv\+\_\+}
+\begin{DoxyCompactList}\small\item\em convar used to wake up main \hyperlink{classControl_a9bfe498567206c176b0e23d71708d6e3}{calcpath()} thread once bogie xy has been collected from bogiepos object \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControl_a786552cb46cde87e5d8aac8da769df8f}\label{classControl_a786552cb46cde87e5d8aac8da769df8f}} 
+std\+::condition\+\_\+variable {\bfseries Velcv\+\_\+}
+\item 
+\mbox{\Hypertarget{classControl_afe4abd7bbf2c1a1d21ffa037ddf8ee82}\label{classControl_afe4abd7bbf2c1a1d21ffa037ddf8ee82}} 
+std\+::vector$<$ std\+::thread $>$ \hyperlink{classControl_afe4abd7bbf2c1a1d21ffa037ddf8ee82}{threads\+\_\+}
+\begin{DoxyCompactList}\small\item\em convar used to wake up function which supplied sim with velocities which moves friendly towards bogies \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControl_a2183b81bba807e732f8cd768e99c6e20}\label{classControl_a2183b81bba807e732f8cd768e99c6e20}} 
+std\+::atomic$<$ bool $>$ {\bfseries running\+\_\+}
+\item 
+\mbox{\Hypertarget{classControl_a77748ccf7bb58ffa0b280ad7e33a2f9e}\label{classControl_a77748ccf7bb58ffa0b280ad7e33a2f9e}} 
+std\+::atomic$<$ bool $>$ \hyperlink{classControl_a77748ccf7bb58ffa0b280ad7e33a2f9e}{gotbogies\+\_\+}
+\begin{DoxyCompactList}\small\item\em bool to keep threads running when true \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControl_adf8a05b46c15032b9d7cc72f9b2b5d6e}\label{classControl_adf8a05b46c15032b9d7cc72f9b2b5d6e}} 
+std\+::atomic$<$ bool $>$ \hyperlink{classControl_adf8a05b46c15032b9d7cc72f9b2b5d6e}{gotpath\+\_\+}
+\begin{DoxyCompactList}\small\item\em boolean used for cv\+\_\+ predicate. Set to true when data from bogiepos class has come through \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControl_afde9de0840660562bfb1d4adaf513a58}\label{classControl_afde9de0840660562bfb1d4adaf513a58}} 
+std\+::atomic$<$ bool $>$ \hyperlink{classControl_afde9de0840660562bfb1d4adaf513a58}{gotglobal\+\_\+}
+\begin{DoxyCompactList}\small\item\em boolean used to notify when a bogie order has been determined \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControl_ac976ca5679155e87d0d48439515385f6}\label{classControl_ac976ca5679155e87d0d48439515385f6}} 
+std\+::atomic$<$ bool $>$ {\bfseries getvel\+\_\+}
+\item 
+\mbox{\Hypertarget{classControl_a7eda266577684041424f5f30b83e7c61}\label{classControl_a7eda266577684041424f5f30b83e7c61}} 
+std\+::atomic$<$ bool $>$ \hyperlink{classControl_a7eda266577684041424f5f30b83e7c61}{startmove\+\_\+}
+\begin{DoxyCompactList}\small\item\em boolean set to true once pure pursuit gamma has been calculated. Allows for combination of angular and linear velocity to be calculated to match gamma \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControl_acbae7d5fe1e846d3e18bde050b7d47eb}\label{classControl_acbae7d5fe1e846d3e18bde050b7d47eb}} 
+std\+::shared\+\_\+ptr$<$ Simulator $>$ \hyperlink{classControl_acbae7d5fe1e846d3e18bde050b7d47eb}{sim\+\_\+}
+\begin{DoxyCompactList}\small\item\em once velocity from above has been calculated set to true to begin moving \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classControl_af8f3f9e1cdc0eef72c8909fb4fdbe625}\label{classControl_af8f3f9e1cdc0eef72c8909fb4fdbe625}} 
+bool {\bfseries restart\+\_\+}
+\item 
+\mbox{\Hypertarget{classControl_a1f1ff7bfd8ae9d904b0129a7aa5d9423}\label{classControl_a1f1ff7bfd8ae9d904b0129a7aa5d9423}} 
+std\+::vector$<$ std\+::pair$<$ Point, double $>$ $>$ {\bfseries bogiexyth\+\_\+}
+\item 
+\mbox{\Hypertarget{classControl_a619045e6557f64b899094072d91cb81c}\label{classControl_a619045e6557f64b899094072d91cb81c}} 
+std\+::vector$<$ std\+::pair$<$ Point, double $>$ $>$ {\bfseries bogieglb\+\_\+}
+\item 
+\mbox{\Hypertarget{classControl_ab08189ab85b36a617ca92fe0d5c883f9}\label{classControl_ab08189ab85b36a617ca92fe0d5c883f9}} 
+double {\bfseries friend\+\_\+orient}
+\item 
+\mbox{\Hypertarget{classControl_ae0c72e0e6f9a65c47e465919d933f591}\label{classControl_ae0c72e0e6f9a65c47e465919d933f591}} 
+double {\bfseries lin\+\_\+vel\+\_\+}
+\item 
+\mbox{\Hypertarget{classControl_aad6d7018e96b5fa63eaa408efbe27a5d}\label{classControl_aad6d7018e96b5fa63eaa408efbe27a5d}} 
+double {\bfseries ang\+\_\+vel\+\_\+}
+\item 
+\mbox{\Hypertarget{classControl_a24a6dc661cdf3860042fe413da5e0263}\label{classControl_a24a6dc661cdf3860042fe413da5e0263}} 
+double {\bfseries gamma\+\_\+}
+\item 
+\mbox{\Hypertarget{classControl_a90725edeeaf742703b571edb950be39c}\label{classControl_a90725edeeaf742703b571edb950be39c}} 
+bool {\bfseries base\+\_\+start}
+\item 
+\mbox{\Hypertarget{classControl_a3e85346d55044ad264e2806f4d50f75d}\label{classControl_a3e85346d55044ad264e2806f4d50f75d}} 
+std\+::map$<$ int, Point $>$ {\bfseries map\+\_\+}
+\item 
+\mbox{\Hypertarget{classControl_a8b9b711bca4a1d3d796c4943141b2d46}\label{classControl_a8b9b711bca4a1d3d796c4943141b2d46}} 
+std\+::vector$<$ std\+::pair$<$ Point, double $>$ $>$ {\bfseries P\+OI}
+\item 
+\mbox{\Hypertarget{classControl_a4f42fcf3ec3958ee4fd8cedfd34ed3c4}\label{classControl_a4f42fcf3ec3958ee4fd8cedfd34ed3c4}} 
+std\+::vector$<$ std\+::pair$<$ double, double $>$ $>$ {\bfseries P\+O\+I\+\_\+sort\+\_\+}
+\item 
+\mbox{\Hypertarget{classControl_a306e59dd2abffd5dc259e49cd0d11250}\label{classControl_a306e59dd2abffd5dc259e49cd0d11250}} 
+std\+::vector$<$ std\+::vector$<$ std\+::pair$<$ \hyperlink{structD__A}{D\+\_\+A}, int $>$ $>$ $>$ {\bfseries B\+Bgraph}
+\item 
+\mbox{\Hypertarget{classControl_a9fffc0076b66e557907e84e429c8e859}\label{classControl_a9fffc0076b66e557907e84e429c8e859}} 
+std\+::vector$<$ int $>$ {\bfseries graph\+\_\+path}
+\item 
+\mbox{\Hypertarget{classControl_a9f281d802d134300f3583f5d14388eb9}\label{classControl_a9f281d802d134300f3583f5d14388eb9}} 
+std\+::vector$<$ int $>$ {\bfseries opt\+\_\+path\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classControl_a9bfe498567206c176b0e23d71708d6e3}\label{classControl_a9bfe498567206c176b0e23d71708d6e3}} 
+\index{Control@{Control}!calcpath@{calcpath}}
+\index{calcpath@{calcpath}!Control@{Control}}
+\subsubsection{\texorpdfstring{calcpath()}{calcpath()}}
+{\footnotesize\ttfamily void Control\+::calcpath (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Main thread calculates bogie order via graph search. 
+
+Calculates time to each bogie from starting position //////////// \mbox{\Hypertarget{classControl_aa18094ca515f8dbcdff94e0b7a60a88a}\label{classControl_aa18094ca515f8dbcdff94e0b7a60a88a}} 
+\index{Control@{Control}!command@{command}}
+\index{command@{command}!Control@{Control}}
+\subsubsection{\texorpdfstring{command()}{command()}}
+{\footnotesize\ttfamily void Control\+::command (\begin{DoxyParamCaption}\item[{double}]{lin,  }\item[{double}]{ang }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+issues velocity commands 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lin} & \\
+\hline
+{\em ang} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classControl_af846dd07501030d430893f17cd4a4178}\label{classControl_af846dd07501030d430893f17cd4a4178}} 
+\index{Control@{Control}!getoptimalpath@{getoptimalpath}}
+\index{getoptimalpath@{getoptimalpath}!Control@{Control}}
+\subsubsection{\texorpdfstring{getoptimalpath()}{getoptimalpath()}}
+{\footnotesize\ttfamily void Control\+::getoptimalpath (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$ \&}]{optpath }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+function inside \hyperlink{classControl_a9bfe498567206c176b0e23d71708d6e3}{calcpath()} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em optpath} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classControl_af7401b14ae40f38234d29b6adaf5d8a6}\label{classControl_af7401b14ae40f38234d29b6adaf5d8a6}} 
+\index{Control@{Control}!getrestart@{getrestart}}
+\index{getrestart@{getrestart}!Control@{Control}}
+\subsubsection{\texorpdfstring{getrestart()}{getrestart()}}
+{\footnotesize\ttfamily bool Control\+::getrestart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Public getter called in main once 4 bogies have been intercepted to allow for new readings to be recieved. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classControl_a3b1ef3f00ba7fdee871d352d7d5f546e}\label{classControl_a3b1ef3f00ba7fdee871d352d7d5f546e}} 
+\index{Control@{Control}!graphsearch@{graphsearch}}
+\index{graphsearch@{graphsearch}!Control@{Control}}
+\subsubsection{\texorpdfstring{graphsearch()}{graphsearch()}}
+{\footnotesize\ttfamily int Control\+::graphsearch (\begin{DoxyParamCaption}\item[{int}]{node,  }\item[{double \&}]{quickest\+\_\+time,  }\item[{double \&}]{current\+\_\+orient }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Graph search function called in optpath. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & \\
+\hline
+{\em quickest\+\_\+time} & \\
+\hline
+{\em current\+\_\+orient} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classControl_a3535c9d84af21822fe3b5318391092b1}\label{classControl_a3535c9d84af21822fe3b5318391092b1}} 
+\index{Control@{Control}!relate\+Orientto\+B\+Bangle@{relate\+Orientto\+B\+Bangle}}
+\index{relate\+Orientto\+B\+Bangle@{relate\+Orientto\+B\+Bangle}!Control@{Control}}
+\subsubsection{\texorpdfstring{relate\+Orientto\+B\+Bangle()}{relateOrienttoBBangle()}}
+{\footnotesize\ttfamily double Control\+::relate\+Orientto\+B\+Bangle (\begin{DoxyParamCaption}\item[{double}]{orient,  }\item[{double}]{bearing }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Relates the bearing angle of a bogie from base to the needed friendly orientation to be pointed at the bogie. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em orient} & \\
+\hline
+{\em bearing} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classControl_aff1c1cb4117bcdff659978feb6d45a8f}\label{classControl_aff1c1cb4117bcdff659978feb6d45a8f}} 
+\index{Control@{Control}!setbogiexyth@{setbogiexyth}}
+\index{setbogiexyth@{setbogiexyth}!Control@{Control}}
+\subsubsection{\texorpdfstring{setbogiexyth()}{setbogiexyth()}}
+{\footnotesize\ttfamily void Control\+::setbogiexyth (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::pair$<$ Point, double $>$$>$ \&}]{bogiexyth,  }\item[{std\+::vector$<$ std\+::pair$<$ Point, double $>$$>$ \&}]{bogieglb,  }\item[{std\+::pair$<$ Point, double $>$}]{frnd,  }\item[{std\+::map$<$ int, Point $>$}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Called in the main to take data from \hyperlink{classBogiepos}{Bogiepos} class into object of this class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bogiexyth} & \\
+\hline
+{\em bogieglb} & \\
+\hline
+{\em frnd} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classControl_a57ae0e13099f01e27fe5afc0765bc611}\label{classControl_a57ae0e13099f01e27fe5afc0765bc611}} 
+\index{Control@{Control}!wrapalpha@{wrapalpha}}
+\index{wrapalpha@{wrapalpha}!Control@{Control}}
+\subsubsection{\texorpdfstring{wrapalpha()}{wrapalpha()}}
+{\footnotesize\ttfamily double Control\+::wrapalpha (\begin{DoxyParamCaption}\item[{double}]{alpha }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+wraps angle between 0-\/\+PI or -\/\+P\+I-\/0 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alpha} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+control.\+h\item 
+control.\+cpp\end{DoxyCompactItemize}

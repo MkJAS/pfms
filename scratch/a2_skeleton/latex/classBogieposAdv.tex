@@ -1,0 +1,65 @@
+\hypertarget{classBogieposAdv}{}\section{Bogiepos\+Adv Class Reference}
+\label{classBogieposAdv}\index{Bogiepos\+Adv@{Bogiepos\+Adv}}
+
+
+Inheritance diagram for Bogiepos\+Adv\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=154pt]{classBogieposAdv__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bogiepos\+Adv\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=171pt]{classBogieposAdv__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBogieposAdv_a0b295babf5011077561b9bb8729f9ac2}\label{classBogieposAdv_a0b295babf5011077561b9bb8729f9ac2}} 
+{\bfseries Bogiepos\+Adv} (std\+::shared\+\_\+ptr$<$ Simulator $>$ \&sim, std\+::shared\+\_\+ptr$<$ Timer $>$ \&timer)
+\item 
+\mbox{\Hypertarget{classBogieposAdv_a0d2aa854b7d981dcd2aab317c6647004}\label{classBogieposAdv_a0d2aa854b7d981dcd2aab317c6647004}} 
+void \hyperlink{classBogieposAdv_a0d2aa854b7d981dcd2aab317c6647004}{start} ()
+\begin{DoxyCompactList}\small\item\em starts threads \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBogieposAdv_a56ebed2f7f60d2983c16154a966ed9e3}\label{classBogieposAdv_a56ebed2f7f60d2983c16154a966ed9e3}} 
+std\+::map$<$ int, \hyperlink{structvelocity}{velocity} $>$ {\bfseries calcbogie\+Vel} ()
+\item 
+\mbox{\Hypertarget{classBogieposAdv_a4854019d616648248d766bf014c56ff7}\label{classBogieposAdv_a4854019d616648248d766bf014c56ff7}} 
+\hyperlink{structvelocity}{velocity} {\bfseries getvel} (std\+::pair$<$ int, int $>$ \&it, std\+::vector$<$ std\+::pair$<$ Point, double $>$$>$ \&t1, std\+::vector$<$ std\+::pair$<$ Point, double $>$$>$ \&t0, std\+::vector$<$ double $>$ \&times1, std\+::vector$<$ double $>$ \&times0, double \&pose)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBogieposAdv_a1397ca8153862494414ff135997da59a}\label{classBogieposAdv_a1397ca8153862494414ff135997da59a}} 
+std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ {\bfseries associate} (std\+::vector$<$ std\+::pair$<$ Point, double $>$$>$ \&vec1, std\+::vector$<$ std\+::pair$<$ Point, double $>$$>$ \&vec2)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBogieposAdv_a4fd97d2f8f9ba65028cc3f92960ce2db}\label{classBogieposAdv_a4fd97d2f8f9ba65028cc3f92960ce2db}} 
+std\+::shared\+\_\+ptr$<$ Timer $>$ {\bfseries timer\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposAdv_aaba3fb9369708bc8b21c10aab41d7441}\label{classBogieposAdv_aaba3fb9369708bc8b21c10aab41d7441}} 
+std\+::map$<$ int, \hyperlink{structvelocity}{velocity} $>$ {\bfseries bogie\+\_\+ids}
+\item 
+\mbox{\Hypertarget{classBogieposAdv_ab23f42b77901d0a6add7364a3a63b77c}\label{classBogieposAdv_ab23f42b77901d0a6add7364a3a63b77c}} 
+std\+::condition\+\_\+variable {\bfseries Velcv\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposAdv_adfe1922b518765c4f6ca3f496597d81f}\label{classBogieposAdv_adfe1922b518765c4f6ca3f496597d81f}} 
+std\+::mutex {\bfseries Velmtx\+\_\+}
+\item 
+\mbox{\Hypertarget{classBogieposAdv_a6cd66259846f16c3025c3bb0cb06239a}\label{classBogieposAdv_a6cd66259846f16c3025c3bb0cb06239a}} 
+bool {\bfseries getvelocities\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bogiepos\+Adv.\+h\item 
+bogiepos\+Adv.\+cpp\end{DoxyCompactItemize}

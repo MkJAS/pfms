@@ -1,0 +1,6 @@
+{
+    "C_Cpp.default.includePath": [
+        "~/git/pfms-2021s-MkJAS/scratch/a2_skeleton"
+    ],
+    "cmake.configureOnOpen": true
+}

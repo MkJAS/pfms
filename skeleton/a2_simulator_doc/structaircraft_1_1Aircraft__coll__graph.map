@@ -1,0 +1,6 @@
+<map id="aircraft::Aircraft" name="aircraft::Aircraft">
+<area shape="rect" id="node2" href="$structgeometry__msgs_1_1Pose.html" title="geometry_msgs::Pose" alt="" coords="119,95,273,121"/>
+<area shape="rect" id="node3" href="$structgeometry__msgs_1_1Quaternion.html" title="geometry_msgs::Quaternion" alt="" coords="5,5,192,32"/>
+<area shape="rect" id="node4" href="$structgeometry__msgs_1_1Point.html" title="geometry_msgs::Point" alt="" coords="217,5,370,32"/>
+<area shape="rect" id="node5" href="$classTimer.html" title="Timer" alt="" coords="306,95,361,121"/>
+</map>

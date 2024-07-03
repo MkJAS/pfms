@@ -1,0 +1,123 @@
+\hypertarget{classRangerFusionInterface}{}\section{Ranger\+Fusion\+Interface Class Reference}
+\label{classRangerFusionInterface}\index{Ranger\+Fusion\+Interface@{Ranger\+Fusion\+Interface}}
+
+
+Specifies the required interface for your \hyperlink{classRangerFusion}{Ranger\+Fusion} class your ranger fusion class must inherit from it. {\bfseries  You M\+U\+ST N\+OT edit this file }.  
+
+
+
+
+{\ttfamily \#include $<$rangerfusioninterface.\+h$>$}
+
+
+
+Inheritance diagram for Ranger\+Fusion\+Interface\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classRangerFusionInterface__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classRangerFusionInterface_ab8fdee0050521767d33179a63da91e4f}{set\+Cells} (std\+::vector$<$ \hyperlink{classCell}{Cell} $\ast$$>$ cells)=0
+\begin{DoxyCompactList}\small\item\em Accepts the container of cells. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRangerFusionInterface_ada6afdab2ce6d58a1bd0134f5e2be23f}\label{classRangerFusionInterface_ada6afdab2ce6d58a1bd0134f5e2be23f}} 
+virtual void \hyperlink{classRangerFusionInterface_ada6afdab2ce6d58a1bd0134f5e2be23f}{grab\+And\+Fuse\+Data} ()=0
+\begin{DoxyCompactList}\small\item\em Does two operations (1) Calls each ranger to generate data and uses this data to determine colissions with provided container of cells (2) Generates a \textquotesingle{}fusion\textquotesingle{} of the data based on collision conditions as descibed in Assignment 2 specification. \end{DoxyCompactList}\item 
+virtual std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{classRangerFusionInterface_a9d60ca5866261026b870d7c0171587f5}{get\+Raw\+Range\+Data} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the raw data from all sensors in the ranger container within a vector of vectors The raw data is updated every time a new fusion is requested (grab\+And\+Fuse\+Dat). The raw data is the data used for collision checking. If no fusion has occured the vector shall be empty. N\+O\+TE\+: Cells positioned ON the sensor will be reported as U\+N\+K\+O\+WN. \end{DoxyCompactList}\item 
+virtual double \hyperlink{classRangerFusionInterface_a65155605804376da4f67baf3c6f97f40}{get\+Scanning\+Area} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the total scanning area possible with C\+O\+NE based scanners supplied A union of all areas \href{https://en.wikipedia.org/wiki/Union_(set_theory)}{\tt https\+://en.\+wikipedia.\+org/wiki/\+Union\+\_\+(set\+\_\+theory)} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Specifies the required interface for your \hyperlink{classRangerFusion}{Ranger\+Fusion} class your ranger fusion class must inherit from it. {\bfseries  You M\+U\+ST N\+OT edit this file }. 
+
+\hyperlink{classRanger}{Ranger} Interface Class
+
+Specifies the required interface for your \hyperlink{classRangerFusion}{Ranger\+Fusion} class your ranger fusion class must inherit from it. {\bfseries  You M\+U\+ST N\+OT edit this file }. \begin{DoxyAuthor}{Author}
+Alen Alempijevic 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+01-\/2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2019-\/07-\/10 
+\end{DoxyDate}
+\begin{DoxyPrecond}{Precondition}
+none 
+\end{DoxyPrecond}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000002}{Bug}]none reported as of 2020-\/04-\/11 \end{DoxyRefDesc}
+\begin{DoxyWarning}{Warning}
+students M\+U\+ST N\+OT change this class (the header file) 
+\end{DoxyWarning}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classRangerFusionInterface_a9d60ca5866261026b870d7c0171587f5}\label{classRangerFusionInterface_a9d60ca5866261026b870d7c0171587f5}} 
+\index{Ranger\+Fusion\+Interface@{Ranger\+Fusion\+Interface}!get\+Raw\+Range\+Data@{get\+Raw\+Range\+Data}}
+\index{get\+Raw\+Range\+Data@{get\+Raw\+Range\+Data}!Ranger\+Fusion\+Interface@{Ranger\+Fusion\+Interface}}
+\subsubsection{\texorpdfstring{get\+Raw\+Range\+Data()}{getRawRangeData()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$std\+::vector$<$double$>$ $>$ Ranger\+Fusion\+Interface\+::get\+Raw\+Range\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the raw data from all sensors in the ranger container within a vector of vectors The raw data is updated every time a new fusion is requested (grab\+And\+Fuse\+Dat). The raw data is the data used for collision checking. If no fusion has occured the vector shall be empty. N\+O\+TE\+: Cells positioned ON the sensor will be reported as U\+N\+K\+O\+WN. 
+
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::vector$<$double$>$$>$ the outer elements of the vector related to the rangers, the inner elements of vector are the respective range readings
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classRangerFusionInterface_ada6afdab2ce6d58a1bd0134f5e2be23f}{grab\+And\+Fuse\+Data} 
+\end{DoxySeeAlso}
+
+
+Implemented in \hyperlink{classRangerFusion_a5780383fdffe121a7a2372a047819ba9}{Ranger\+Fusion}.
+
+\mbox{\Hypertarget{classRangerFusionInterface_a65155605804376da4f67baf3c6f97f40}\label{classRangerFusionInterface_a65155605804376da4f67baf3c6f97f40}} 
+\index{Ranger\+Fusion\+Interface@{Ranger\+Fusion\+Interface}!get\+Scanning\+Area@{get\+Scanning\+Area}}
+\index{get\+Scanning\+Area@{get\+Scanning\+Area}!Ranger\+Fusion\+Interface@{Ranger\+Fusion\+Interface}}
+\subsubsection{\texorpdfstring{get\+Scanning\+Area()}{getScanningArea()}}
+{\footnotesize\ttfamily virtual double Ranger\+Fusion\+Interface\+::get\+Scanning\+Area (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the total scanning area possible with C\+O\+NE based scanners supplied A union of all areas \href{https://en.wikipedia.org/wiki/Union_(set_theory)}{\tt https\+://en.\+wikipedia.\+org/wiki/\+Union\+\_\+(set\+\_\+theory)} 
+
+\begin{DoxyReturn}{Returns}
+double Total area coverage
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classRangerFusionInterface_ada6afdab2ce6d58a1bd0134f5e2be23f}{grab\+And\+Fuse\+Data} 
+\end{DoxySeeAlso}
+
+
+Implemented in \hyperlink{classRangerFusion_a7215e5405e808b5a853984e2b70ed6ad}{Ranger\+Fusion}.
+
+\mbox{\Hypertarget{classRangerFusionInterface_ab8fdee0050521767d33179a63da91e4f}\label{classRangerFusionInterface_ab8fdee0050521767d33179a63da91e4f}} 
+\index{Ranger\+Fusion\+Interface@{Ranger\+Fusion\+Interface}!set\+Cells@{set\+Cells}}
+\index{set\+Cells@{set\+Cells}!Ranger\+Fusion\+Interface@{Ranger\+Fusion\+Interface}}
+\subsubsection{\texorpdfstring{set\+Cells()}{setCells()}}
+{\footnotesize\ttfamily virtual void Ranger\+Fusion\+Interface\+::set\+Cells (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{classCell}{Cell} $\ast$$>$}]{cells }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Accepts the container of cells. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cells} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classRangerFusion_a9b69869bd1e3bca155bcecbad5ea463b}{Ranger\+Fusion}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+rangerfusioninterface.\+h\end{DoxyCompactItemize}

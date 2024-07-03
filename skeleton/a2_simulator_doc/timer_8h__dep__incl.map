@@ -1,0 +1,7 @@
+<map id="timer.h" name="timer.h">
+<area shape="rect" id="node2" href="$aircraft_8h.html" title="Aircraft specific structure used for simulator. Students could, but not necessarily need to use this ..." alt="" coords="25,80,98,107"/>
+<area shape="rect" id="node3" href="$simulator_8h.html" title="Simulator for assignment 2. " alt="" coords="55,155,142,181"/>
+<area shape="rect" id="node6" href="$timer_8cpp.html" title="A class for measuring periods of time. " alt="" coords="174,80,250,107"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title="Main entry point for assignment 2. " alt="" coords="5,229,80,256"/>
+<area shape="rect" id="node5" href="$simulator_8cpp.html" title="Simulator for assignment 2. " alt="" coords="105,229,205,256"/>
+</map>

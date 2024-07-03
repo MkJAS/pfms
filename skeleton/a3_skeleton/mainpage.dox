@@ -1,0 +1,51 @@
+/** \mainpage
+
+@htmlinclude manifest.html
+
+@b a3_skeleton is a sample package prepared for PfMS to assist students in completing Assignment 3 - Individual Project
+
+@section package The a3_skeleton package content
+
+The package contains a single node `a3_skeleton` which is part of the `a3_skeleton_ex` executable. It alos contains a library @ref GridProcessing and unit tests included for the library
+
+The a3_skeleton_ex
+- leverages @ref main.cpp to create an instance of @ref Sample class
+- The @Sample class establishes ROS callbacks via @ref Sample::odomCallback (listening to robot_0/odom), @ref @Sample::laserCallback (listening to robot_0/base_scan) and @ref Sample::occupancyGridCallback (listening to local_map/local_map) and advertises a service on /my_service_name which invokes the functions @ref Sample::myExample, responding to requests of type project_setup::FaceGoal
+@ref main.cpp also creates a thread @ref Sample.seperateThread  which runs at 0.1Hz (every 10s) and on each loop
+- at present service requests do not result in any processing, the requests is simply acknowledged with a ROS_INFO messages (stipulating the x and y location from teh request filed). The responce fields are not altered.
+
+
+@section usage Starting the node
+
+You should start roscore, and then need to start the project_setup  and the start this node<br>
+```
+roslaunch project_setup project_setup.launch
+rosrun a3_skeleton a3_skeleton_ex
+```
+
+@section behaviour Code inner workings
+
+The a3_skeleton node with it's respective publishers and subscriber topics.
+
+\image html doc/pic/rosgraph.png width=50%
+
+There is a single thread in the Sample class called @ref Sample.seperateThread which runs at 0.1Hz (every 10s) and on each loop
+ - Obtains latest OccupancyGrid grid (via mutex)
+ - Uses @ref GridProcessing and the member function @ref GridProcessing::checkConnectivity function to search through the grid to see if two points (specified in world coordinates) can be conneted via a straigh line that goes through free space. The first point on this line (origin) is the robot position and the second x=1,y=0  (destination). As the OccupancyGrid is in local (robot coordinates) and the robot at the centre of it, we convert both points to local coordinates). The outcome of the connectivity search is published as two verbosity levels: INFO or WARN message (point can / can't be reached),
+ - We publishes location (x=1,y=0) as a sphere to /visualisation_markers topic as a @ref visualization_msgs::MarkerArray, in namespace "test", of size 0.5x0.5x0.5 and green in colour, and it is visible for 10.0s (to coincide with the rate of runnign the loop)
+
+@subsection rviz Example of Rviz
+
+Here we show a subsection example (in the minpage.dox) for stduents :) <br>
+
+A screenshot of rviz indicating what the code will produce when running it IS BELOW.
+
+\image html doc/pic/rviz.png width=50%
+
+@section grid_processing GridProcessing Library
+
+The @ref GridProcessing is extensively documented, supplied are also unit tests which confirm the behaviour of the library. To compile uints test `catkin make tests` and you running tests via `rosrun a3_skeleton a3_skeleton_grid_processing_test`
+
+
+*/
+

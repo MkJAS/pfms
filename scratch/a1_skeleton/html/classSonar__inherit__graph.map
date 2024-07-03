@@ -1,0 +1,4 @@
+<map id="Sonar" name="Sonar">
+<area shape="rect" id="node2" href="$classRanger.html" title="Ranger" alt="" coords="31,80,95,107"/>
+<area shape="rect" id="node3" href="$classRangerInterface.html" title="Specifies the functionality for the Ranger Class, your Ranger class must inherit from it..." alt="" coords="5,5,120,32"/>
+</map>

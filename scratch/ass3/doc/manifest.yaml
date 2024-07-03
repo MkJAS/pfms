@@ -1,0 +1,22 @@
+actions: []
+authors: ''
+brief: ''
+bugtracker: ''
+depends:
+- nav_msgs
+- message_runtime
+- project_setup
+- roscpp
+- sensor_msgs
+- roslib
+- std_msgs
+- catkin
+- rosbag
+description: The ass3 package
+license: TODO
+maintainers: joseph <joseph.seklawy@student.uts.edu.au>
+msgs: []
+package_type: package
+repo_url: ''
+srvs: []
+url: ''

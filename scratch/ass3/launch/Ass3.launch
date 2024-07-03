@@ -1,0 +1,3 @@
+<launch>
+  <node name="pfms_path_following" pkg="a3_pf_install" type="pfms_path_following-velocity_contro" output="screen"/>
+</launch>

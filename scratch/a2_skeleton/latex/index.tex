@@ -1,0 +1,53 @@
+The task is to simulate the flight path of an airplane to visit the bogies present on the map.
+
+I\+N\+S\+T\+R\+U\+C\+T\+I\+O\+NS\+:
+
+The simulator will run in B\+A\+S\+IC mode by defualt unless it is run from terminal with \char`\"{} -\/-\/advanced\char`\"{} added to the command or if the Game\+Mode is set to advanced in the main via \char`\"{}\+Game\+Mode game\+\_\+mode = Game\+Mode\+::\+A\+D\+V\+A\+N\+C\+E\+D;\char`\"{} before the simulation is created.
+\begin{DoxyEnumerate}
+\item Select game mode
+\item The main requires a vector of threads to hold the simulation threads
+\item Create the simulation object via \char`\"{}std\+::shared\+\_\+ptr$<$\+Simulator$>$ sim(new Simulator(true,game\+\_\+mode));\char`\"{}
+\item Then the bogiepos and control objects must be created like so; \hyperlink{classBogiepos}{Bogiepos} bogiepos(sim); \hyperlink{classControl}{Control} control(sim); N\+O\+TE\+: T\+HE S\+IM M\+U\+ST BE P\+A\+S\+S\+ED TO T\+HE O\+B\+J\+E\+C\+TS OF B\+O\+TH B\+O\+G\+I\+P\+OS A\+ND C\+O\+N\+T\+R\+OL AS S\+H\+O\+WN A\+B\+O\+VE O\+T\+H\+E\+R\+W\+I\+SE T\+HE A\+I\+R\+C\+R\+A\+FT W\+I\+LL DO N\+O\+T\+H\+I\+NG
+\item The sim spawn thread can then be started and passed to the vector of threads
+\item The threads within the 2 classes must then be started like so; bogiepos.\+start(); control.\+start();
+\item The main then requires a permanent loop that passes data between the two class objects of bogiepos -\/$>$ control. The psuedo code should follow;~\newline
+ if(game\+\_\+mode is B\+A\+S\+I\+C) while(true)~\newline
+ \{ if(not restarted)~\newline
+ \{ temp1 = getbogieglobal~\newline
+ temp2 = getbogiefriendly~\newline
+ temp3 = getfriendlyxy0~\newline
+ control.\+setbogiexyth(temp1,temp2,temp3) \} \}
+\end{DoxyEnumerate}
+
+S\+U\+M\+M\+A\+RY\+:
+
+The \hyperlink{classBogiepos}{Bogiepos} class handles all the calculations required to obtain the bogies positions in both the global frame and the local frame of references. These are both calculated by a single thread \char`\"{}calcbogieglobalandfriendly()\char`\"{} which is blocking and runs constantly. This function is also responsible for waking up the \char`\"{}getbogiefriendly\char`\"{} and \char`\"{}getbogieglobal\char`\"{} functions which allow for the data to be then passed to the \hyperlink{classControl}{Control} class via the main function.
+
+The \hyperlink{classControl}{Control} class handles all the moving and path calculation required to keep the friendly moving and moving toward the bogies. The \hyperlink{classControl}{Control} class has 3 threads. The idle thread simply ensures that the watchdog timer does not time out, constantly passing move commands every 30ms. The calcpath thread is only woken up when the data is obtained from main and is responsible for calculating which order the A\+I\+R\+C\+R\+A\+FT should visit the bogies. This order is calculating by a graph search. Once this is calculating the calcpath() thread then calls the move() function which handles all the velocity calculations that causes the friendly to reach the bogies. The third thread optvelocities() runs only during the move() function and determines the optimal linear and angular velocities which abide by the 6G limit whilst also abiding by the pure pursuit calculation.
+
+T\+HE G\+R\+A\+PH S\+E\+A\+R\+CH\+:
+
+The graph search is completed in a few steps and works on a model in which the friendly is able to rotate on the spot. Although this is not actually how the friendly moves, modelling it this way simplifies the process and since all we require is an order based on time, the order obtained this way should remain the same even if it was calculated with actual movements;
+\begin{DoxyEnumerate}
+\item Obtain current friendly position and orientation
+\item Based on the above, order the bogie\textquotesingle{}s based on which is quickest to reach
+\item Record the time to reach the first bogie(bogie1) in the above order and then extrapolate the friendly position and orientation to that bogie
+\item Now at bogie1, determine which of the remaining bogies would be quicest to reach from bogie1 at the extroplated orientation
+\item Record the time take to reach bogie2 from bogie1 and add it to a total time counter
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Repeat for all bogies. Record the total time taken from bogie1 to bogieN
+\item Once all bogies have been visited, restart from the beginning, this time starting at the second bogie in the order calculated in step 2
+\item Now for every bogie visited, check the current total time against the total time counter in step 5. If the current total time is larger than the time counter, abandon this path as it is already longer than the previous path.
+\item If at the end of this path, the total time is L\+E\+SS than the previous counter. Update the counter and replace the accepted order with T\+H\+IS path order.
+\item Repeat until every bogie has been chosen as the first in the path
+\item The result should be an order which is the quickest out of every possible combination
+\end{DoxyEnumerate}
+
+K\+N\+O\+WN B\+U\+GS\+: In some instances during B\+A\+S\+IC mode, it appears that the friendly will swap 2 bogies in terms of order of interception. I believe this must be due to the method in which the graph search calculations are computed, however I was unable to solve the issue. But i do believe it has something to do with the calculation of the angle between the friendly current position and the reminaing bogies
+
+In some cases where 2 bogies spawn right next to eachother, the friendly may intercept the bogies in the wrong order. This may cause the code to break and lead to infinte circling.
+
+~\newline
+ By Joseph Seklawy ~\newline
+ \href{mailto:joseph.seklawy@student.uts.edu.au}{\tt joseph.\+seklawy@student.\+uts.\+edu.\+au} 

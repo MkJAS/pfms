@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true,
+		"python.autoComplete.extraPaths": [
+			"/home/joseph/catkin_ws/devel/lib/python2.7/dist-packages",
+			"/opt/ros/melodic/lib/python2.7/dist-packages"
+		],
+		"python.analysis.extraPaths": [
+			"/home/joseph/catkin_ws/devel/lib/python2.7/dist-packages",
+			"/opt/ros/melodic/lib/python2.7/dist-packages"
+		],
+		"files.associations": {
+			"mutex": "cpp",
+			"atomic": "cpp",
+			"vector": "cpp",
+			"condition_variable": "cpp"
+		}
+	}
+}

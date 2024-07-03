@@ -1,0 +1,31 @@
+#######################################################################
+# Now we enable gtests - this section does not need to change
+set(GTEST_ROOT "/usr/src/gtest" CACHE PATH "Path to googletest")
+find_package(GTest REQUIRED)
+
+include_directories(${GTEST_INCLUDE_DIRS})
+
+if(NOT GTEST_LIBRARY)
+   message("GTest library not found")
+endif()
+
+enable_testing()
+###################################
+
+include_directories(
+ ${CMAKE_SOURCE_DIR}  #This enabled us to include files that are part of project
+)
+
+# Add the unit test executable against the source code of the test
+add_executable(rawTests utest_rawdata.cpp)
+# Linking to gtest and to your libraries
+target_link_libraries(rawTests GTest::GTest GTest::Main ranger_lib)
+# We can finally add the test to a list of tests to be run with make test
+add_test(EX1 rawTests)
+
+# Add the unit test executable against the source code of the test
+add_executable(fusionTests utest_fusion.cpp)
+# Linking to gtest and to your libraries
+target_link_libraries(fusionTests GTest::GTest GTest::Main cell ranger_lib mockrangers)
+# We can finally add the test to a list of tests to be run with make test
+add_test(EX2 fusionTests)

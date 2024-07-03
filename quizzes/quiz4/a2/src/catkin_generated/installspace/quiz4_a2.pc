@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: quiz4_a2
+Description: Description of quiz4_a2
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

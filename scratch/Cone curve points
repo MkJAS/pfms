@@ -1,0 +1,37 @@
+    double range = 12;
+    double theta = 20;
+    std::vector<double> curve;
+    double angle_ =0;
+    const double PI = 3.141592654;
+    
+    for(int i=0;i<11;i++)
+    
+    {
+        angle_ = theta+10+90;
+        angle_ = angle_-(i*2);
+        curve.push_back(angle_);
+        cout<<angle_<<endl;
+     
+    }
+    std::cout<<curve.size()<<std::endl;
+    std::cout<<curve[9]<<std::endl;
+    
+    struct Point
+    {
+        double x;
+        double y;
+    };
+    
+    std::vector<Point> crtcurve;
+    for(int i=0;i<11;i++)
+    {
+        Point point;
+        point.x = range*cos(2*PI - (PI/180)*curve[i]);
+        point.y = range*sin(PI - (PI/180)*curve[i]);
+        crtcurve.push_back(point);
+    }
+    for(int i=0;i<11;i++)
+    {
+        std::cout<<crtcurve[i].x<<" "<<crtcurve[i].y<<endl;
+    }
+    

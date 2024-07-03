@@ -1,0 +1,141 @@
+---------------------------------------------------------------------
+ A1 
+---------------------------------------------------------------------
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found GTest: /usr/src/gtest/libgtest.a  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/student/git/quiz2/pfms-2021s-MkJAS/quizzes/quiz2/a1/build
+[ 10%] Building CXX object CMakeFiles/analysis.dir/analysis.cpp.o
+[ 20%] Building CXX object CMakeFiles/analysis.dir/line.cpp.o
+[ 30%] Linking CXX static library libanalysis.a
+[ 30%] Built target analysis
+[ 40%] Building CXX object CMakeFiles/shapes.dir/shape.cpp.o
+[ 50%] Building CXX object CMakeFiles/shapes.dir/circle.cpp.o
+[ 60%] Building CXX object CMakeFiles/shapes.dir/rectangle.cpp.o
+[ 70%] Building CXX object CMakeFiles/shapes.dir/triangle.cpp.o
+[ 80%] Linking CXX static library libshapes.a
+[ 80%] Built target shapes
+[ 90%] Building CXX object marking/CMakeFiles/markingTest.dir/utest.cpp.o
+[100%] Linking CXX executable markingTest
+[100%] Built target markingTest
+---------------------------------------------------------------------
+Running tests...
+Test project /home/student/git/quiz2/pfms-2021s-MkJAS/quizzes/quiz2/a1/build
+    Start 1: Q2A1
+1/1 Test #1: Q2A1 .............................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.00 sec
+---------------------------------------------------------------------
+**********************************************************************
+[==========] Running 4 tests from 3 test cases.
+[----------] Global test environment set-up.
+[----------] 1 test from ShapesTests
+[ RUN      ] ShapesTests.AllShapes
+[       OK ] ShapesTests.AllShapes (0 ms)
+[----------] 1 test from ShapesTests (0 ms total)
+
+[----------] 1 test from CountShapes
+[ RUN      ] CountShapes.AllShapes
+[       OK ] CountShapes.AllShapes (0 ms)
+[----------] 1 test from CountShapes (0 ms total)
+
+[----------] 2 tests from InterceptTest
+[ RUN      ] InterceptTest.Rectangle
+1 4
+1
+1 4
+1
+1 4
+1
+[       OK ] InterceptTest.Rectangle (0 ms)
+[ RUN      ] InterceptTest.Triangle
+1 3
+1
+1 3
+1
+1 3
+1
+[       OK ] InterceptTest.Triangle (0 ms)
+[----------] 2 tests from InterceptTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 4 tests from 3 test cases ran. (0 ms total)
+[  PASSED  ] 4 tests.
+---------------------------------------------------------------------
+ A2 
+---------------------------------------------------------------------
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found GTest: /usr/src/gtest/libgtest.a  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/student/git/quiz2/pfms-2021s-MkJAS/quizzes/quiz2/a2/build
+----------------------------------------------------------------------
+Making marking test
+----------------------------------------------------------------------
+[ 25%] Building CXX object marking/CMakeFiles/container_ops_Marking.dir/__/container_ops.cpp.o
+[ 50%] Linking CXX static library libcontainer_ops_Marking.a
+[ 50%] Built target container_ops_Marking
+[ 75%] Building CXX object marking/CMakeFiles/markingTest.dir/utest.cpp.o
+[100%] Linking CXX executable markingTest
+[100%] Built target markingTest
+----------------------------------------------------------------------
+Running tests...
+Test project /home/student/git/quiz2/pfms-2021s-MkJAS/quizzes/quiz2/a2/build
+    Start 1: Q2A2
+1/1 Test #1: Q2A2 .............................***Failed    0.00 sec
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   0.00 sec
+
+The following tests FAILED:
+	  1 - Q2A2 (Failed)
+Makefile:90: recipe for target 'test' failed
+---------------------------------------------------------------------
+Executing marking test
+---------------------------------------------------------------------
+[==========] Running 2 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 2 tests from FunctionsTest
+[ RUN      ] FunctionsTest.ModifyingFrontOfDeque
+[       OK ] FunctionsTest.ModifyingFrontOfDeque (0 ms)
+[ RUN      ] FunctionsTest.BubbleSort
+/home/student/git/quiz2/pfms-2021s-MkJAS/quizzes/quiz2/a2/marking/utest.cpp:30: Failure
+Value of: std::equal(original.begin(), original.end(), sorted.begin())
+  Actual: false
+Expected: true
+[  FAILED  ] FunctionsTest.BubbleSort (0 ms)
+[----------] 2 tests from FunctionsTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test case ran. (0 ms total)
+[  PASSED  ] 1 test.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] FunctionsTest.BubbleSort
+
+ 1 FAILED TEST
